@@ -1,0 +1,34 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <PreferenceCategory app:title="About">
+        <Preference
+            app:key="versionCode"
+            app:title="@string/app_name"
+            tools:summary="1.0">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/Sharkaboi/" />
+        </Preference>
+
+        <Preference
+            app:key="bugReport"
+            app:summary="@string/bug_report_summary"
+            app:title="@string/bug_report">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/Sharkaboi/" />
+        </Preference>
+
+        <Preference
+            app:key="releases"
+            app:summary="Check for new releases!"
+            app:title="Releases">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/Sharkaboi/" />
+        </Preference>
+    </PreferenceCategory>
+
+</PreferenceScreen>
