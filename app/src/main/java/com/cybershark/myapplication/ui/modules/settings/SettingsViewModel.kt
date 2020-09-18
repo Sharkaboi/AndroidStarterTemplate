@@ -14,7 +14,6 @@ class SettingsViewModel
 @ViewModelInject
 constructor(
     @Assisted savedStateHandle: SavedStateHandle,
-    context: Context,
     mainRepository: MainRepository
 ) : ViewModel() {
 
