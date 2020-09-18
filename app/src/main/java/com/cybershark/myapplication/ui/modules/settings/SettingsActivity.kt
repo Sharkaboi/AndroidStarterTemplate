@@ -2,6 +2,7 @@ package com.cybershark.myapplication.ui.modules.settings
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
 import androidx.multidex.BuildConfig
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -27,6 +28,9 @@ class SettingsActivity : AppCompatActivity() {
     private fun setCustomAnims() = overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
 
     class SettingsFragment : PreferenceFragmentCompat() {
+
+        private val settingsViewModel by viewModels<SettingsViewModel>()
+
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
             setData()
@@ -50,7 +54,6 @@ class SettingsActivity : AppCompatActivity() {
         private fun setupThemeListener() {
             TODO("Not yet implemented")
         }
-
 
     }
 }

@@ -1,8 +1,8 @@
 package com.cybershark.myapplication.util
 
-sealed class Status {
-    object IDLE : Status()
-    object LOADING : Status()
-    object COMPLETED : Status()
-    object ERROR : Status()
+sealed class UIState {
+    object IDLE : UIState()
+    object LOADING : UIState()
+    data class ERROR(val message: String) : UIState()
+    data class COMPLETED(val message: String) : UIState()
 }
