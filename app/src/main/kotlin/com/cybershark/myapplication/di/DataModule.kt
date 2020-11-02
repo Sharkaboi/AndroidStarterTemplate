@@ -1,6 +1,8 @@
 package com.cybershark.myapplication.di
 
 import android.content.Context
+import android.content.SharedPreferences
+import androidx.preference.PreferenceManager
 import com.cybershark.myapplication.data.repositories.MainRepository
 import dagger.Module
 import dagger.Provides
@@ -19,4 +21,9 @@ object DataModule {
         @ApplicationContext context: Context
     ): MainRepository = MainRepository(context)
 
+    @Singleton
+    @Provides
+    fun getSharedPrefs(@ApplicationContext context: Context): SharedPreferences {
+        return PreferenceManager.getDefaultSharedPreferences(context)
+    }
 }

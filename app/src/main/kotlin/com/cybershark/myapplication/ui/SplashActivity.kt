@@ -1,14 +1,23 @@
-package com.cybershark.myapplication.ui.splash
+package com.cybershark.myapplication.ui
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import com.cybershark.myapplication.R
 import com.cybershark.myapplication.ui.main.MainActivity
+import com.cybershark.myapplication.util.moveToAndFinishAffinity
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var sharedPrefs: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setThemeFromPrefs()
@@ -17,7 +26,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun openActivity() {
         //start activity needed based on state
-        startActivity(Intent(this, MainActivity::class.java))
+        moveToAndFinishAffinity<MainActivity>()
         setCustomAnims()
     }
 
@@ -25,7 +34,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun setThemeFromPrefs() {
         //Int for theme. Default 0->Light, 1->Dark
-        when (PreferenceManager.getDefaultSharedPreferences(this).getInt("ThemeOption", 0)) {
+        when (sharedPrefs.getInt("ThemeOption", 0)) {
             0 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             1 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }

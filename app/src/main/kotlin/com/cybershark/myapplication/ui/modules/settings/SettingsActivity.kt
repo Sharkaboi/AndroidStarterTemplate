@@ -7,6 +7,7 @@ import androidx.multidex.BuildConfig
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.cybershark.myapplication.R
+import dagger.hilt.android.AndroidEntryPoint
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -27,6 +28,7 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun setCustomAnims() = overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
 
+    @AndroidEntryPoint
     class SettingsFragment : PreferenceFragmentCompat() {
 
         private val settingsViewModel by viewModels<SettingsViewModel>()
